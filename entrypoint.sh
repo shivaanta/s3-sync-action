@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -z "$AWS_S3_BUCKET" ] || [-z "$AWS_S3_BUCKET_DEV"]; then
+if [ -z "$AWS_S3_BUCKET" ]; then
   echo "AWS_S3_BUCKET is not set. Quitting."
   exit 1
 fi
@@ -29,7 +29,6 @@ fi
 
 # Create a dedicated profile for this action to avoid conflicts
 # with past/future actions.
-# https://github.com/jakejarvis/s3-sync-action/issues/1
 aws configure --profile s3-sync-action <<-EOF > /dev/null 2>&1
 ${AWS_ACCESS_KEY_ID}
 ${AWS_SECRET_ACCESS_KEY}
