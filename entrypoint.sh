@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -z "$AWS_S3_BUCKET" ]; then
+if [ -z "$AWS_S3_BUCKET" ] || [-z "$AWS_S3_BUCKET_DEV"]; then
   echo "AWS_S3_BUCKET is not set. Quitting."
   exit 1
 fi
