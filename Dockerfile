@@ -1,4 +1,6 @@
-FROM python:3.8-alpine
+# FROM python:3.8-alpine
+
+FROM amazon/aws-cli:2.7.35
 
 LABEL "com.github.actions.name"="S3 Sync"
 LABEL "com.github.actions.description"="Sync a directory to an AWS S3 repository"
@@ -10,10 +12,6 @@ LABEL repository="https://github.com/shivaanta/s3-sync-action"
 LABEL homepage="https://shivaanta.com/"
 LABEL maintainer="Anil Kumar Patel"
 
-# https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst
-ENV AWSCLI_VERSION='1.18.14'
-
-RUN pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
